@@ -4,7 +4,7 @@ import { ApiRoutes } from "./api";
 import { PokemonRoutes } from "./pokemon";
 
 export const AppRoutes = (): Router[] => [
-    ApiRoutes(), 
+    ApiRoutes(),  
     AuthRoutes(),
     PokemonRoutes()
 ]

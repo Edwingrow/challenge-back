@@ -18,7 +18,7 @@ export class Enviroment {
 
     public static getEnv (name : string) : string | undefined {
         return process.env[name] 
-    }
+    } 
 
     public static getPort (name: string): number {
         return Number(this.getEnv(name))
