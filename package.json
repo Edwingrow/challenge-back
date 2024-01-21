@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "tsnd --respawn --clear src/app.ts",
-    "start": "npm run build && node dist/app.js"
+    "start": "npm run build && node ./dist/app.js"
   },
   "keywords": [],
   "author": "",
