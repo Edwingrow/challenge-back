@@ -23,7 +23,7 @@ export class PokemonRepositoryImpl implements PokemonRepository {
          await Promise.all(listURL.map(async (pokemon: any) => {
             const data = await PokeApiAxios.getPokemonByName(pokemon.split('/')[6]);
             const PokemonData: PokemonModel = new PokemonModel(data);
-            console.log(PokemonData.toJSON().funFact)
+            PokemonData.toJSON().funFact
         }));
         return pokemonListData;
     }
