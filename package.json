@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "npx tsc",
     "dev": "tsnd --respawn --clear src/app.ts",
     "start": "npm run build && node dist/app.js"
   },
