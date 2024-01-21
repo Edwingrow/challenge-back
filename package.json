@@ -4,15 +4,11 @@
   "description": "",
   "main": "index.js",
   "type": "commonjs",
-  "engines": {
-    "node": "16.15.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "tsnd --respawn --clear src/app.ts",
-    "start": "npm run build && node dist/app.js",
-    "netlify:dev": "netlify dev"
+    "start": "npm run build && node dist/app.js"
   },
   "keywords": [],
   "author": "",
