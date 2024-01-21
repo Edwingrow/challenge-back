@@ -1,4 +1,4 @@
-import { GenerateDate } from '../../config/helpers/moment/generateDate';
+import { GenerateDate } from '../../config/helpers/date/GenerateDate';
 import { Request, Response } from '../../config/server/http';
 import { AuthCredentialsUseCase } from '../../core/application/auth/AuthCredentialsUseCase';
 

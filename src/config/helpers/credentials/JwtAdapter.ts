@@ -12,12 +12,8 @@ export class JwtAdapter {
         duration: string = '2h' ): Promise<string|null> {
         const JWT_SEED = Enviroment.getEnv('TOKEN_SECRET') ?? '';
         return new Promise( ( resolve ) => {
-    
-          // todo: generación del seed
           jwt.sign( payload, JWT_SEED, { expiresIn: duration }, (err, token) => {
-    
             if ( err ) return resolve(null);
-    
             resolve(token!);
           });
     

@@ -6,8 +6,9 @@ export class ApiController {
        request.headers.authorization = request.headers.authorization?.replace('Bearer ', '')
          response.json({
               success: true,
-              message: 'Welcome to the API',
-              user: request.user
+              message: 'Hello world',
+              user: request.user,
+              token: request.headers.authorization
          })
     }
 } 

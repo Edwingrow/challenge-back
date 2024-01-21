@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
 
 export class Enviroment {
-   
     public static initEnvironments() {
         dotenv.config({
           path: this.environmentPath()

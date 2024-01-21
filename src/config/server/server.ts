@@ -8,7 +8,7 @@ export class Server  {
     private readonly port: number
     public readonly app = express()
     constructor (){
-        this.port = Enviroment.getPort('APP_PORT')
+        this.port = Enviroment.getPort('APP_PORT') ?? 3000
         this.configuration()
     }
 
