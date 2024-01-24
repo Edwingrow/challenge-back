@@ -12,7 +12,7 @@ const authRepository: AuthRepository = new AuthRepositoryImpl()
 const authCredentialUseCase : AuthCredentialsUseCase = new AuthCredentialsUseCase(authRepository)
 const controller  = new AuthController(authCredentialUseCase)
 export const  AuthRoutes = () : Router => {
-    router.post('/login', AuthClientMiddleware(), (req: Request, res: Response) => controller.login(req, res));
+    router.post('/login', AuthClientMiddleware.ValidateCredentials, (req: Request, res: Response) => controller.login(req, res));
     router.post('/credentials',(_req: unknown, res:any) => {
         res.json({
             token_secret: JwtAdapter.generateSecretToken()

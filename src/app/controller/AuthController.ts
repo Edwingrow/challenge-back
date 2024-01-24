@@ -8,11 +8,14 @@ export class AuthController {
     ) {}
 
     async login(request: Request, response: Response) {
-   const  token =  await this.authCredentialUseCase.login(request.body.username);
+    const userName = request.body.email;
+   const  token =  await this.authCredentialUseCase.login(userName);
     response.json({
+      email: userName,
       success: true,
       token: token,
-      expiretIn: GenerateDate.generateExpirationDate()
+      expiretIn: GenerateDate.generateExpirationDate(),
+      error: false
     });
 
 }

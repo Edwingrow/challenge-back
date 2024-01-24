@@ -1,8 +1,6 @@
 import express, { Router } from "express"
 import { PokemonController } from "../controller/PokemonController"
 import { AuthTokenMiddleware } from "../middlewares/AuthTokenMiddleware"
-import { PokemonRepository } from "../../core/domain/repositories/PokemonRepository"
-import { GetListPokemonUseCase } from "../../core/application/pokemon/GetListPokemonUseCase"
 import { PokemonRepositoryImpl } from "../../core/infraestrucute/pokemon/PokemonRepositoryImpl"
 
 const router : Router = express()

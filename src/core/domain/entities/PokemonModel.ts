@@ -48,7 +48,7 @@ export class PokemonModel {
   private readonly types: string[];
   private readonly image: string;
   private readonly stats: {name:string; base_stat:number}[];
-  private readonly moves: string[];
+  // private readonly moves: string[];
   private readonly weight: number;
   private readonly height: number;
   private readonly funFact: string[] = [];
@@ -62,7 +62,7 @@ export class PokemonModel {
       name: stat.stat.name,
       base_stat: stat.base_stat,
     }));
-    this.moves = pokemon.moves.map((move) => move.move.name);
+    // this.moves = pokemon.moves.map((move) => move.move.name);
     this.weight = pokemon.weight;
     this.height = pokemon.height;
     this.getFunFact(this.id).then((funFact) => {
@@ -91,7 +91,6 @@ export class PokemonModel {
       types: this.types,
       image: this.image,
       stats: this.stats,
-      moves: this.moves.map(move => ({ name: move })),
       funFact: this.funFact,
     };
   }

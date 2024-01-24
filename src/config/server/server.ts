@@ -3,7 +3,6 @@ import morgan from 'morgan'
 import cors from 'cors'
 import { Enviroment } from '../constants/Enviroments';
 import { AppRoutes } from '../../app/routes/routes';
-import passport from 'passport';
 export class Server  {
     private readonly port: number
     public readonly app = express()
@@ -16,7 +15,6 @@ export class Server  {
         this.app.use(morgan('dev'))
         this.app.use(cors())
         this.app.use(express.json())
-        this.app.use(passport.initialize());
 
         //Rutas del servidor
         this.app.use( 
