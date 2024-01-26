@@ -11,12 +11,12 @@ export class AuthClientMiddleware {
                 message: 'Token not found'
             })
         }
-        if(!autorization.startsWith('Bearer')) return res.status(401).json({error: 'Token invalid'})
+        if(!autorization.startsWith('Bearer')) return res.status(401).json({error: true, message: 'Token invalid'})
         const token = autorization.split(' ').at(1) || ''
 
         try {
             const payload =  await JwtAdapter.validateToken(token)
-            if(!payload) return res.status(401).json({error: 'Token invalid'})
+            if(!payload) return res.status(401).json({error: true, message: 'Token invalid'})
            
             next()
         }

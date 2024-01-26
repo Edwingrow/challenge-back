@@ -1,5 +1,6 @@
 import { Request, Response } from "../../config/server/http";
 import { GetListPokemonUseCase } from '../../core/application/pokemon/GetListPokemonUseCase';
+import { GetPokemonByNameUseCase } from "../../core/application/pokemon/GetPokemonByNameUseCase";
 import { PokemonRepository } from "../../core/domain/repositories/PokemonRepository";
 export class PokemonController {
     constructor(
@@ -9,15 +10,11 @@ export class PokemonController {
         try {
             const { offset, limit } = request.query; 
             const getListPokemonUseCase : GetListPokemonUseCase = new GetListPokemonUseCase(this.pokemonRepository);
-            const list = await getListPokemonUseCase.getPokemonList(Number(offset), Number(limit)) 
-            if(!list) { 
-                return response.status(404).json({message: 'Pokemon list not found', error: list});
+            const results = await getListPokemonUseCase.getPokemonList(Number(offset), Number(limit)) 
+            if(!results) { 
+                return response.status(404).json({message: 'Pokemon list not found', error: true});
             }
-            response.status(200).json({
-                success: true,
-                message: 'Pokemon list',
-                data: list
-            })
+            response.status(200).json({results})
         
         }
         catch(error) {
@@ -25,7 +22,21 @@ export class PokemonController {
         }
 
     }
-    public getPokemonbyName(request: Request, response: Response) {
-        response.status(200).json({message: 'Hello world'})
+    public async getPokemonbyName(request: Request, response: Response) {
+        {
+            try {
+                const { name } = request.params; 
+                const getPokemonByNameUseCase : GetPokemonByNameUseCase = new GetPokemonByNameUseCase(this.pokemonRepository)
+                const results = await getPokemonByNameUseCase.getPokemonByName(name)
+                if(!results) { 
+                    return response.status(404).json({message: 'Pokemon not found', error: true});
+                }
+                response.status(200).json(results)
+            
+            }
+            catch(error) {
+                console.log(error);
+            }
+        }
     }
 }

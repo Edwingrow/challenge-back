@@ -1,4 +1,4 @@
-import { PokemonModel } from "../entities/PokemonModel";
+import { PokemonModel } from "../entities/PokemonModel.entity";
 
 export interface PokemonRepository {
     getPokemonList: (offset: number, limit: number) => Promise<PokemonModel>;

@@ -7,7 +7,6 @@ export class ApiController {
          response.json({
               success: true,
               message: 'Hello world',
-              user: request.user,
               token: request.headers.authorization
          })
     }

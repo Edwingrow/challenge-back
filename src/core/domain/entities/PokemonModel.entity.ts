@@ -7,11 +7,7 @@ interface PokemonType {
     url: string;
   };
 }
-interface PokemonMove {
-  move: {
-    name: string;
-  };
-}
+
 interface PokemonStat {
   base_stat: number;
   stat: {
@@ -26,8 +22,6 @@ interface PokemonSprites {
 interface Pokemon {
   name: string;
   order: number;
-  moves: PokemonMove[];
-  past_types: string[];
   species: {
     name: string;
     url: string;
@@ -48,7 +42,6 @@ export class PokemonModel {
   private readonly types: string[];
   private readonly image: string;
   private readonly stats: {name:string; base_stat:number}[];
-  // private readonly moves: string[];
   private readonly weight: number;
   private readonly height: number;
   private readonly funFact: string[] = [];
@@ -62,7 +55,6 @@ export class PokemonModel {
       name: stat.stat.name,
       base_stat: stat.base_stat,
     }));
-    // this.moves = pokemon.moves.map((move) => move.move.name);
     this.weight = pokemon.weight;
     this.height = pokemon.height;
     this.getFunFact(this.id).then((funFact) => {
@@ -90,8 +82,7 @@ export class PokemonModel {
       height: this.height,
       types: this.types,
       image: this.image,
-      stats: this.stats,
-      funFact: this.funFact,
+      stats: this.stats
     };
   }
 }

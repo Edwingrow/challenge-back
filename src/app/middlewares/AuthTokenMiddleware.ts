@@ -1,7 +1,5 @@
 import { NextFunction } from "express";
 import { Request, Response } from "../../config/server/http";
-import { Jwt } from "jsonwebtoken";
-import { Enviroment } from "../../config/constants/Enviroments";
 import { JwtAdapter } from "../../config/helpers/credentials/JwtAdapter";
 export class AuthTokenMiddleware {
     static  validateJWT = async (req: Request, res:Response, next: NextFunction) => {
@@ -12,12 +10,12 @@ export class AuthTokenMiddleware {
                 message: 'Token not found'
             })
         }
-        if(!autorization.startsWith('Bearer')) return res.status(401).json({error: 'Token invalid'})
+        if(!autorization.startsWith('Bearer')) return res.status(401).json({error: true, message: 'Token invalid'})
         const token = autorization.split(' ').at(1) || ''
 
         try {
             const payload =  await JwtAdapter.validateToken(token)
-            if(!payload) return res.status(401).json({error: 'Token invalid'})
+            if(!payload) return res.status(401).json({error: true, message: 'Token invalid'})
            
             next()
         }
